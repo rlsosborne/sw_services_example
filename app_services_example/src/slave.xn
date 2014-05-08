@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://www.xmos.com"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
+  <Type>Board</Type>
+  <Name>XK-1A Development Board</Name>
+  <BoardId>0005021X</BoardId>
+
+  <Declarations>
+    <Declaration>tileref tile[1]</Declaration>
+  </Declarations>
+
+  <Packages>
+    <Package id="0" Type="XS1-L1A-TQ128">
+      <Nodes>
+        <Node Id="0" InPackageId="0" Type="XS1-L1A" Oscillator="20MHz" SystemFrequency="400MHz" RoutingId="1">
+          <Tile Number="0" Reference="tile[0]"/>
+          <RoutingTable>
+            <Bits>
+              <Bit number="0" direction="1"/>
+            </Bits>
+            <Links>
+              <Link name="XLC" direction="1"/>
+            </Links>
+          </RoutingTable>
+        </Node>
+      </Nodes>
+    </Package>
+  </Packages>
+
+  <Nodes>
+    <Node Id="1" Type="device:" RoutingId="0">
+      <Service Id="0" Proto="other_side(chanend c);">
+        <Chanend Identifier="c" remote="3" end="3"/>
+      </Service>
+    </Node>
+  </Nodes>
+
+  <Links>
+    <Link Encoding="2wire" Delays="4,4" Flags="noinit">
+      <LinkEndpoint NodeId="0" Link="XLC"/>
+      <LinkEndpoint NodeId="1"/>
+    </Link>
+  </Links>
+
+  <JTAGChain>
+     <JTAGDevice NodeId="0"/>
+  </JTAGChain>
+
+</Network>
+
+
