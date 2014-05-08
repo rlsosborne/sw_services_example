@@ -33,13 +33,6 @@ void configure_link(tileref tile, unsigned linkNum, unsigned direction,
   write_node_config_reg(tile, XS1_SSWITCH_XLINK_0_NUM + linkNum, regVal);
 }
 
-unsigned getd(chanend c)
-{
-  unsigned d;
-  asm volatile("getd %0, res[%1]" : "=r"(d) : "r"(c));
-  return d;
-}
-
 void this_side(chanend c)
 {
   int linknum;
